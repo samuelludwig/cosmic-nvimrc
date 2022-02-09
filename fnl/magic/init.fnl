@@ -1,6 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
-             nvim aniseed.nvim}})
+             nvim aniseed.nvim
+             v vim
+             a aniseed.core}})
 
 ;;; Introduction
 
@@ -33,7 +35,6 @@
 (set nvim.g.mapleader " ")
 (set nvim.g.maplocalleader ",")
 
-
 ;;; Plugins
 
 ;; Run script/sync.sh to update, install and clean your plugins.
@@ -56,7 +57,8 @@
   :liuchengxu/vim-better-default {:mod :better-default}
   :mbbill/undotree {}
   :radenling/vim-dispatch-neovim {}
-  :srcery-colors/srcery-vim {:mod :srcery}
+  :srcery-colors/srcery-vim {}
+  :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :tami5/compe-conjure {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
@@ -69,6 +71,15 @@
   :tpope/vim-surround {}
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
+  :ggandor/lightspeed.nvim {}
+  :nvim-telescope/telescope.nvim {}
+  :nvim-treesitter/nvim-treesitter {}
+  :nvim-treesitter/playground {}
+  :L3MON4D3/LuaSnip {:mod :luasnip}
   :w0rp/ale {:mod :ale}
   :wbthomason/packer.nvim {}
   )
+
+;;; After-plugin configs
+
+(set nvim.o.background :light)

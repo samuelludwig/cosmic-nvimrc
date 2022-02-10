@@ -35,6 +35,7 @@
 (set nvim.g.mapleader " ")
 (set nvim.g.maplocalleader ",")
 
+
 ;;; Plugins
 
 ;; Run script/sync.sh to update, install and clean your plugins.
@@ -80,6 +81,19 @@
   :wbthomason/packer.nvim {}
   )
 
+
 ;;; After-plugin configs
 
 (set nvim.o.background :light)
+
+(defn mapkey [modes bind callback]
+  (vim.keymap.set modes bind callback {:silent true}))
+
+(def toggle-background
+  #(let [bg nvim.o.background]
+    (if (not= "dark" bg) ;; check for a `not` in the case of an unset background
+      (set nvim.o.background :dark)
+      (set nvim.o.background :light))))
+
+(mapkey "n" "<leader>b" toggle-background)
+

@@ -1,8 +1,33 @@
 (module magic.plugin.luasnip
   {autoload {nvim aniseed.nvim
              ls luasnip
-             types luasnip.util.types}
+             extras luasnip.extras
+             formatting luasnip.extras.fmt
+             types luasnip.util.types
+             conds luasnip.extras.expand_conditions}
    require-macros [magic.macros]})
+
+;;; Some Shorthands
+
+(def s ls.snippet)
+(def sn ls.snippet_node)
+(def t ls.text_node)
+(def i ls.insert_node)
+(def f ls.function_node)
+(def c ls.choice_node)
+(def d ls.dynamic_node)
+(def r ls.restore_node)
+(def l extras.lambda)
+(def rep extras.rep)
+(def p extras.partial)
+(def m extras.match)
+(def n extras.nonempty)
+(def dl extras.dynamic_lambda)
+(def fmt formatting.fmt)
+(def fmta formatting.fmta)
+
+
+;;; Config
 
 (ls.config.set_config
   {:history true
@@ -24,7 +49,16 @@
 
 (mapkey "i" "<c-l>" #(when (ls.choice_active) (ls.change_choice 1)))
 
-{ls.snippets {:all [(ls.parser.parse_snippet "expand" "--this is what was expanded")]}}
-
 ;(mapkey "n" "<leader><leader>s" "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
-;;;;
+
+
+;;; Snippets
+
+(def quick-snip ls.parser.parse_snippet)
+
+{ls.snippets 
+   {:all [(quick-snip "expand" ";; this is what was expanded")]
+    :fnl [(s :defn [(t "(defn [") (i 1) (t "] ") (i 2) (t ")")])]
+    :janet []
+    :php []}
+ ls.autosnippets {}}

@@ -1,7 +1,6 @@
 (module magic.init
   {autoload {plugin magic.plugin
              nvim aniseed.nvim
-             v vim
              a aniseed.core}})
 
 ;;; Introduction
@@ -76,7 +75,7 @@
   :nvim-telescope/telescope.nvim {}
   :nvim-treesitter/nvim-treesitter {}
   :nvim-treesitter/playground {}
-  :L3MON4D3/LuaSnip {:mod :luasnip}
+  :L3MON4D3/LuaSnip {:mod :luasnips}
   :w0rp/ale {:mod :ale}
   :wbthomason/packer.nvim {}
   )
@@ -96,4 +95,3 @@
       (set nvim.o.background :light))))
 
 (mapkey "n" "<leader>b" toggle-background)
-

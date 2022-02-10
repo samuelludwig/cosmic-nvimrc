@@ -1,11 +1,13 @@
 (module magic.plugin.luasnip
   {autoload {nvim aniseed.nvim
              ls luasnip
+             a aniseed.core
              extras luasnip.extras
              formatting luasnip.extras.fmt
              types luasnip.util.types
              conds luasnip.extras.expand_conditions}
    require-macros [magic.macros]})
+
 
 ;;; Some Shorthands
 
@@ -43,9 +45,9 @@
 (defn mapkey [modes bind callback]
   (vim.keymap.set modes bind callback {:silent true}))
 
-(mapkey ["i" "s"] "<c-k>" #(when (ls.expand_or_jumpable) (ls.expand_or_jump)))
+(mapkey ["i" "s"] "<tab>" #(when (ls.expand_or_jumpable) (ls.expand_or_jump)))
 
-(mapkey ["i" "s"] "<c-j>" #(when (ls.jumpable -1) (ls.jump -1)))
+(mapkey ["i" "s"] "<S-tab>" #(when (ls.jumpable -1) (ls.jump -1)))
 
 (mapkey "i" "<c-l>" #(when (ls.choice_active) (ls.change_choice 1)))
 
@@ -54,11 +56,28 @@
 
 ;;; Snippets
 
+;; VSCode style snippet definition
 (def quick-snip ls.parser.parse_snippet)
 
-{ls.snippets 
-   {:all [(quick-snip "expand" ";; this is what was expanded")]
-    :fnl [(s :defn [(t "(defn [") (i 1) (t "] ") (i 2) (t ")")])]
-    :janet []
-    :php []}
- ls.autosnippets {}}
+(def spc (t " "))
+(def left-sqr (t "["))
+(def right-sqr (t "]"))
+(def left-paren (t "("))
+(def right-paren (t ")"))
+(def double-backtick (t "``"))
+(def func-def (t "defn"))
+(def var-def (t "def"))
+;; map bare text to (t "$bare-text")?
+(defn- lisp-assignment [position ?default-val] [left-sqr (i position ?default-val) right-sqr])
+(set ls.snippets
+     {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")]
+      :fennel [(s :defn (a.concat 
+                           [left-paren func-def spc (i 1 :name) spc] 
+                           (lisp-assignment 2 :x)
+                           [spc (i 3) right-paren]))
+               (s :doc (a.concat
+                         [(t "``" "") (i 1 "TODO: Document") (t "" "``")]))]
+      :janet []
+      :php []})
+(set ls.autosnippets 
+     {:all [(s :autotrigger [(t "autosnippet")])]})

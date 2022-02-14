@@ -49,6 +49,8 @@
 
 (u.mapkey "i" "<c-l>" #(when (ls.choice_active) (ls.change_choice 1)))
 
+;; With conjure this becomes unneeded, as I can simply reevaluate this buffer
+;; via `,eb` and reload everything
 ;(mapkey "n" "<leader><leader>s" "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 
 
@@ -67,27 +69,84 @@
 (def var-def (t "def"))
 ;; map bare text to (t "$bare-text")?
 (defn- lisp-assignment [position ?default-val] [left-sqr (i position ?default-val) right-sqr])
+(def clojure-style-function-def 
+  (fmta
+    "(defn <name> [<args>] <body>)"
+    {:name (i 1 "name")
+     :args (i 2 "x")
+     :body (i 3 "nil")}))
+(def lisp-style-if-def
+  (fmta
+    "
+    (if <condition> <then> <else>)
+    "
+    {:condition (i 1 "(true? true)") 
+     :then (i 2 "true") 
+     :else (i 3 "false")}))
+
+;;; Snippet Definitions
 (set ls.snippets
-     {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")
-            (s :sheb (fmta "!#/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
+  ;;; ALL
+  {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")
+         (s :sheb (fmta "!#/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
 
-      :fennel [(s :de (fmta
-                        "(defn <name> [<args>] <body>)"
-                        {:name (i 1 "name")
-                         :args (i 2 "x")
-                         :body (i 3 "nil")}))
+   ;;; FENNEL
+   :fennel [(s :de clojure-style-function-def)
 
-               (s :doc (fmta 
-                         "
-                         \"
-                         <docstring>
-                         \"
-                         "
-                         {:docstring (i 1 "TODO: Document")}))]
+            (s :doc (fmta 
+                      "
+                     \"
+                     <docstring>
+                     \"
+                     "
+                      {:docstring (i 1 "TODO: Document")}))
 
-      :janet []
+            (s :if lisp-style-if-def)]
 
-      :php []})
+   ;;; JANET
+   :janet [(s :de clojure-style-function-def)
+
+           (s :doc (fmta 
+                      "
+                     ``
+                     <docstring>
+                     ``
+                     "
+                      {:docstring (i 1 "TODO: Document")}))
+
+           (s :if lisp-style-if-def)]
+
+   ;;; PHP
+   :php [(s :fun (fmta
+                   "
+                   function <name> (<args>): <type> {
+                   \t<body>
+                   }
+                   "
+                   {:name (i 1 "name") 
+                    :args (i 2 "$x") 
+                    :type (i 3 "bool") 
+                    :body (i 4 "return true;")}))
+
+         (s :if (fmta
+                  "
+                  if (<condition>) { 
+                  \t<then>
+                  }
+                  "
+                  {:condition (i 1 "true") :then (i 2 "return true;")}))
+
+         (s :ife (fmta
+                  "
+                  if (<condition>) { 
+                  \t<then>
+                  } else {
+                  \t<else>
+                  }
+                  "
+                  {:condition (i 1 "true") 
+                   :then (i 2 "return true;") 
+                   :else (i 3 "return false;")}))]})
 
 (set ls.autosnippets 
      {:all [(s :autotrigger [(t "autosnippet")])]})

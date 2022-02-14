@@ -1,7 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
              nvim aniseed.nvim
-             a aniseed.core}})
+             a aniseed.core
+             u magic.utils}})
 
 ;;; Introduction
 
@@ -25,7 +26,8 @@
 (set nvim.o.sessionoptions "blank,curdir,folds,help,tabpages,winsize")
 (set nvim.o.inccommand :split)
 
-(nvim.ex.set :spell)
+;; Maybe have this only be active in .md/.txt/.wiki buffers?
+;(nvim.ex.set :spell)
 (nvim.ex.set :list)
 
 
@@ -52,6 +54,7 @@
   :hrsh7th/nvim-compe {}
   :itchyny/lightline.vim {}
   :jiangmiao/auto-pairs {:mod :auto-pairs}
+  :gpanders/nvim-parinfer {}
   :junegunn/fzf {}
   :junegunn/fzf.vim {}
   :liuchengxu/vim-better-default {:mod :better-default}
@@ -74,20 +77,18 @@
   :ggandor/lightspeed.nvim {}
   :nvim-telescope/telescope.nvim {}
   :nvim-treesitter/nvim-treesitter {}
+  :nvim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
   :w0rp/ale {:mod :ale}
   :janet-lang/janet.vim {}
-  :wbthomason/packer.nvim {}
-  )
+  :wbthomason/packer.nvim {})
+  
 
 
 ;;; After-plugin configs
 
 (set nvim.o.background :light)
-
-(defn mapkey [modes bind callback]
-  (vim.keymap.set modes bind callback {:silent true}))
 
 (def toggle-background
   #(let [bg nvim.o.background]
@@ -95,4 +96,4 @@
       (set nvim.o.background :dark)
       (set nvim.o.background :light))))
 
-(mapkey "n" "<leader>b" toggle-background)
+(u.mapkey "n" "<leader>b" toggle-background)

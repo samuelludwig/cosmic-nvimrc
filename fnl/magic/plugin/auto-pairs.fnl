@@ -10,5 +10,5 @@
 
 (augroup auto-pairs-config
   (nvim.ex.autocmd
-    :FileType "clojure,fennel,scheme"
+    :FileType "php"
     (.. "call v:lua.require('" *module-name* "').setup()")))

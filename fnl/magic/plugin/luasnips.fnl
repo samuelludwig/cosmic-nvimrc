@@ -2,6 +2,7 @@
   {autoload {nvim aniseed.nvim
              ls luasnip
              a aniseed.core
+             u magic.utils
              extras luasnip.extras
              formatting luasnip.extras.fmt
              types luasnip.util.types
@@ -42,14 +43,11 @@
    :ext_base_prio 300
    :ext_prio_increase 1})
 
-(defn mapkey [modes bind callback]
-  (vim.keymap.set modes bind callback {:silent true}))
+(u.mapkey ["i" "s"] "<tab>" #(when (ls.expand_or_jumpable) (ls.expand_or_jump)))
 
-(mapkey ["i" "s"] "<tab>" #(when (ls.expand_or_jumpable) (ls.expand_or_jump)))
+(u.mapkey ["i" "s"] "<S-tab>" #(when (ls.jumpable -1) (ls.jump -1)))
 
-(mapkey ["i" "s"] "<S-tab>" #(when (ls.jumpable -1) (ls.jump -1)))
-
-(mapkey "i" "<c-l>" #(when (ls.choice_active) (ls.change_choice 1)))
+(u.mapkey "i" "<c-l>" #(when (ls.choice_active) (ls.change_choice 1)))
 
 ;(mapkey "n" "<leader><leader>s" "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>")
 
@@ -70,14 +68,26 @@
 ;; map bare text to (t "$bare-text")?
 (defn- lisp-assignment [position ?default-val] [left-sqr (i position ?default-val) right-sqr])
 (set ls.snippets
-     {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")]
-      :fennel [(s :defn (a.concat 
-                           [left-paren func-def spc (i 1 :name) spc] 
-                           (lisp-assignment 2 :x)
-                           [spc (i 3) right-paren]))
-               (s :doc (a.concat
-                         [(t "``" "") (i 1 "TODO: Document") (t "" "``")]))]
+     {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")
+            (s :sheb (fmta "!#/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
+
+      :fennel [(s :de (fmta
+                        "(defn <name> [<args>] <body>)"
+                        {:name (i 1 "name")
+                         :args (i 2 "x")
+                         :body (i 3 "nil")}))
+
+               (s :doc (fmta 
+                         "
+                         \"
+                         <docstring>
+                         \"
+                         "
+                         {:docstring (i 1 "TODO: Document")}))]
+
       :janet []
+
       :php []})
+
 (set ls.autosnippets 
      {:all [(s :autotrigger [(t "autosnippet")])]})

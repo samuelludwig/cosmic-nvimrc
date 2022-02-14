@@ -1,0 +1,1 @@
+(module magic.plugin.lspconfig)

@@ -77,6 +77,7 @@
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
   :w0rp/ale {:mod :ale}
+  :janet-lang/janet.vim {}
   :wbthomason/packer.nvim {}
   )
 

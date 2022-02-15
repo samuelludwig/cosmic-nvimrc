@@ -67,22 +67,6 @@
 (def double-backtick (t "``"))
 (def func-def (t "defn"))
 (def var-def (t "def"))
-;; map bare text to (t "$bare-text")?
-(defn- lisp-assignment [position ?default-val] [left-sqr (i position ?default-val) right-sqr])
-(def clojure-style-function-def 
-  (fmta
-    "(defn <name> [<args>] <body>)"
-    {:name (i 1 "name")
-     :args (i 2 "x")
-     :body (i 3 "nil")}))
-(def lisp-style-if-def
-  (fmta
-    "
-    (if <condition> <then> <else>)
-    "
-    {:condition (i 1 "(true? true)") 
-     :then (i 2 "true") 
-     :else (i 3 "false")}))
 
 ;;; Snippet Definitions
 (set ls.snippets
@@ -91,7 +75,12 @@
          (s :sheb (fmta "!#/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
 
    ;;; FENNEL
-   :fennel [(s :de clojure-style-function-def)
+   :fennel [(s :de
+               (fmta
+                "(defn <name> [<args>] <body>)"
+                {:name (i 1 "name")
+                 :args (i 2 "x")
+                 :body (i 3 "nil")}))
 
             (s :doc (fmta 
                       "
@@ -101,10 +90,20 @@
                      "
                       {:docstring (i 1 "TODO: Document")}))
 
-            (s :if lisp-style-if-def)]
+            (s :if (fmta
+                    "
+                    (if <condition> <then> <else>)
+                    "
+                    {:condition (i 1 "(true? true)") 
+                     :then (i 2 "true") 
+                     :else (i 3 "false")}))]
 
    ;;; JANET
-   :janet [(s :de clojure-style-function-def)
+   :janet [(s :de (fmta
+                    "(defn <name> [<args>] <body>)"
+                    {:name (i 1 "name")
+                     :args (i 2 "x")
+                     :body (i 3 "nil")}))
 
            (s :doc (fmta 
                       "
@@ -114,19 +113,43 @@
                      "
                       {:docstring (i 1 "TODO: Document")}))
 
-           (s :if lisp-style-if-def)]
+           (s :if (fmta
+                    "
+                    (if <condition> <then> <else>)
+                    "
+                    {:condition (i 1 "(true? true)") 
+                     :then (i 2 "true") 
+                     :else (i 3 "false")}))]
 
    ;;; PHP
-   :php [(s :fun (fmta
+   :php [(s :newfi (fmt
+                     "
+                     <?php declare (strict_types=1); namespace {namespace};
+                     require_once __DIR__ . '/{vendor-path}/vendor/autoload.php';
+                     require_once __DIR__ . '/{relative-path}.php';
+
+                     "
+                     {:namespace (i 1 "MyNamespace")
+                      :vendor-path (i 2 "..")
+                      :relative-path (i 3 "path-to-file")}))
+
+         (s :ro (fmta
+                  "require_once __DIR__ . '/<relative-path>.php';" 
+                  {:relative-path (i 1 "path-to-file")}))
+
+         (s :fun (fmta
                    "
                    function <name> (<args>): <type> {
                    \t<body>
                    }
                    "
-                   {:name (i 1 "name") 
-                    :args (i 2 "$x") 
-                    :type (i 3 "bool") 
-                    :body (i 4 "return true;")}))
+                              {:name (i 1 "name") 
+                               :args (i 2 "$x") 
+                               :type (i 3 "bool") 
+                               :body (i 4 "return true;")}))
+
+         (s :fn (fmt "fn ({x}) => {transformation}"
+                      {:x (i 1 "$x") :transformation (i 2 "$y")}))
 
          (s :if (fmta
                   "

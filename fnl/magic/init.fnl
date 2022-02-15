@@ -77,7 +77,7 @@
   :ggandor/lightspeed.nvim {}
   :nvim-telescope/telescope.nvim {}
   :nvim-treesitter/nvim-treesitter {}
-  :nvim/nvim-lspconfig {:mod :lspconfig}
+  :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
   :w0rp/ale {:mod :ale}

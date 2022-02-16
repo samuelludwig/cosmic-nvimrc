@@ -42,8 +42,11 @@
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 (plugin.use
+  ;; Criticals
   :Olical/aniseed {}
   :Olical/conjure {}
+
+  ;; Preloadeds
   :PeterRincker/vim-argumentative {}
   :airblade/vim-gitgutter {}
   :clojure-vim/clojure.vim {}
@@ -61,7 +64,6 @@
   :mbbill/undotree {}
   :radenling/vim-dispatch-neovim {}
   :srcery-colors/srcery-vim {}
-  :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :tami5/compe-conjure {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
@@ -74,16 +76,27 @@
   :tpope/vim-surround {}
   :tpope/vim-unimpaired {}
   :tpope/vim-vinegar {}
+  :w0rp/ale {:mod :ale}
+
+  ;; Colorschemes
+  :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
+
+  ;; Customizations
+  :kyazdani42/nvim-web-devicons {:mod :devicons}
   :ggandor/lightspeed.nvim {}
-  :nvim-telescope/telescope.nvim {}
+  :nvim-lua/plenary.nvim {}
+  :nvim-telescope/telescope.nvim {:mod :telescope 
+                                  :requires ["nvim-lua/plenary.nvim"]}
   :nvim-treesitter/nvim-treesitter {}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
-  :w0rp/ale {:mod :ale}
+
+  ;; Lang Support
   :janet-lang/janet.vim {}
+
   :wbthomason/packer.nvim {})
-  
+
 
 
 ;;; After-plugin configs

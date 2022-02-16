@@ -133,6 +133,21 @@
                       :vendor-path (i 2 "..")
                       :relative-path (i 3 "path-to-file")}))
 
+         (s :php (fmt
+                   "
+                  <?php
+
+                  " {}))
+
+         (s :it (fmta
+                  "
+                  it(<description>, function () {
+                  \t<the-test>
+                  });
+                  "
+                  {:description (i 1 "\"asserts true is true\"") 
+                   :the-test (i 2 "$this->assertTrue(true);")}))
+
          (s :ro (fmta
                   "require_once __DIR__ . '/<relative-path>.php';" 
                   {:relative-path (i 1 "path-to-file")}))

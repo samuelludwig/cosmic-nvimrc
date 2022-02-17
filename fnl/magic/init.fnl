@@ -88,11 +88,13 @@
   :nvim-telescope/telescope-fzf-native.nvim {:run "make"}
   :nvim-telescope/telescope.nvim {:mod :telescope
                                   :requires ["nvim-lua/plenary.nvim"
-                                             ":nvim-telescope/telescope-fzf-native.nvim"]}
-  :nvim-treesitter/nvim-treesitter {}
+                                             "nvim-telescope/telescope-fzf-native.nvim"]}
+  :nvim-treesitter/nvim-treesitter {:mod :treesitter 
+                                    :run ":TSUpdate"}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
+  :ahmedkhalf/project.nvim {:mod :project-nvim}
 
   ;; Lang Support
   :janet-lang/janet.vim {}

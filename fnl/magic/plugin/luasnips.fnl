@@ -72,7 +72,7 @@
 (set ls.snippets
   ;;; ALL
   {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")
-         (s :sheb (fmta "!#/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
+         (s :sheb (fmta "#!/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
 
    ;;; FENNEL
    :fennel [(s :de
@@ -133,6 +133,13 @@
                       :vendor-path (i 2 "..")
                       :relative-path (i 3 "path-to-file")}))
 
+         (s :** (fmta
+                   "
+                    /**
+                     * <docstring>
+                     */
+                    " {:docstring (i 1 "TODO: Document")}))
+
          (s :php (fmt
                    "
                   <?php
@@ -147,6 +154,15 @@
                   "
                   {:description (i 1 "\"asserts true is true\"") 
                    :the-test (i 2 "$this->assertTrue(true);")}))
+
+         (s :tst (fmta
+                   "
+                   test(<description>, function () {
+                   \t<the-test>
+                   });
+                   "
+                   {:description (i 1 "\"asserts true is true\"") 
+                    :the-test (i 2 "$this->assertTrue(true);")}))
 
          (s :ro (fmta
                   "require_once __DIR__ . '/<relative-path>.php';" 

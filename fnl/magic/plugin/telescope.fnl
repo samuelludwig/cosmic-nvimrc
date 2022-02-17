@@ -14,5 +14,12 @@
   ["n" "<leader>fb" sc.buffers]
   ["n" "<leader>fh" sc.help_tags])
 
-(tscp.setup {})
-;(tscp.load_extension "fzy_native")
+(tscp.setup 
+  {:extensions 
+   ;; These are defaults for fzf
+   {:fzf {:fuzzy true
+          :override_generic_sorter true
+          :override_file_sorter true
+          :case_mode "smart_case"}}})
+
+(tscp.load_extension "fzf")

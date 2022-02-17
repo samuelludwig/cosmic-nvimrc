@@ -85,8 +85,10 @@
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :ggandor/lightspeed.nvim {}
   :nvim-lua/plenary.nvim {}
-  :nvim-telescope/telescope.nvim {:mod :telescope 
-                                  :requires ["nvim-lua/plenary.nvim"]}
+  :nvim-telescope/telescope-fzf-native.nvim {:run "make"}
+  :nvim-telescope/telescope.nvim {:mod :telescope
+                                  :requires ["nvim-lua/plenary.nvim"
+                                             ":nvim-telescope/telescope-fzf-native.nvim"]}
   :nvim-treesitter/nvim-treesitter {}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}

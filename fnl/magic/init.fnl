@@ -85,16 +85,23 @@
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :ggandor/lightspeed.nvim {}
   :nvim-lua/plenary.nvim {}
+  :tami5/sqlite.lua {}
   :nvim-telescope/telescope-fzf-native.nvim {:run "make"}
   :nvim-telescope/telescope.nvim {:mod :telescope
                                   :requires ["nvim-lua/plenary.nvim"
                                              "nvim-telescope/telescope-fzf-native.nvim"]}
+  :nvim-telescope/telescope-frecency.nvim {:mod :frecency 
+                                           :requires ["tami5/sqlite.lua"]}
   :nvim-treesitter/nvim-treesitter {:mod :treesitter 
                                     :run ":TSUpdate"}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
   :ahmedkhalf/project.nvim {:mod :project-nvim}
+  :folke/trouble.nvim {}
+  :Pocco81/TrueZen.nvim {}
+  :rcarriga/nvim-notify {}
+  ;:kevinhwang91/nvim-hlslens {}
 
   ;; Lang Support
   :janet-lang/janet.vim {}

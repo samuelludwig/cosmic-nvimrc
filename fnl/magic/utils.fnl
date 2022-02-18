@@ -6,9 +6,11 @@
 
 (defn not-nil? [x] (not (a.nil? x)))
 
+(defn unless [predicate body] (when (not predicate) body))
+
 (defn mapkey [modes bind callback ?opts]
   ;; If the callback does not exist, we don't attempt to map it
-  (when (not-nil? callback)
+  (unless (a.nil? callback)
     (vim.keymap.set
      modes
      bind

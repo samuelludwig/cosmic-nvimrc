@@ -96,7 +96,31 @@
                     "
                     {:condition (i 1 "(true? true)") 
                      :then (i 2 "true") 
-                     :else (i 3 "false")}))]
+                     :else (i 3 "false")}))
+
+            (s :anim (fmta
+                       "
+                       (module <mod-name>
+                         {autoload {nvim aniseed.nvim
+                                    a aniseed.core}})
+
+
+                       "
+                       {:mod-name (i 1 "module-name")}))
+
+            (s :anip (fmta
+                       "
+                       (module magic.plugin.<mod-name>
+                         {autoload {nvim aniseed.nvim
+                                    a aniseed.core
+                                    u magic.utils
+                                    <plugin-alias> <plugin-name>}})
+
+
+                       "
+                       {:mod-name (i 1 "module-name") 
+                        :plugin-alias (i 2 "plugin-alias") 
+                        :plugin-name (i 3 "plugin-name")}))]
 
    ;;; JANET
    :janet [(s :de (fmta

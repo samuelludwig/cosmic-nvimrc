@@ -82,6 +82,7 @@
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
 
   ;; Customizations
+  :axelf4/vim-strip-trailing-whitespace {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :ggandor/lightspeed.nvim {}
   :nvim-lua/plenary.nvim {}
@@ -90,9 +91,9 @@
   :nvim-telescope/telescope.nvim {:mod :telescope
                                   :requires ["nvim-lua/plenary.nvim"
                                              "nvim-telescope/telescope-fzf-native.nvim"]}
-  :nvim-telescope/telescope-frecency.nvim {:mod :frecency 
+  :nvim-telescope/telescope-frecency.nvim {:mod :frecency
                                            :requires ["tami5/sqlite.lua"]}
-  :nvim-treesitter/nvim-treesitter {:mod :treesitter 
+  :nvim-treesitter/nvim-treesitter {:mod :treesitter
                                     :run ":TSUpdate"}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}

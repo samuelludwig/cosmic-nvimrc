@@ -36,7 +36,7 @@
   {:history true
    :updateevents "TextChanged,TextChangedI"
    :delete_check_events "TextChanged"
-   :ext_opts {types.choiceNode {:active {:virt_text 
+   :ext_opts {types.choiceNode {:active {:virt_text
                                          [["<-" "Error"]
                                           ["choiceNode" "Comment"]]}}}
    :enable_autosnippets true
@@ -82,7 +82,7 @@
                  :args (i 2 "x")
                  :body (i 3 "nil")}))
 
-            (s :doc (fmta 
+            (s :doc (fmta
                       "
                      \"
                      <docstring>
@@ -94,8 +94,8 @@
                     "
                     (if <condition> <then> <else>)
                     "
-                    {:condition (i 1 "(true? true)") 
-                     :then (i 2 "true") 
+                    {:condition (i 1 "(true? true)")
+                     :then (i 2 "true")
                      :else (i 3 "false")}))
 
             (s :anim (fmta
@@ -118,8 +118,8 @@
 
 
                        "
-                       {:mod-name (i 1 "module-name") 
-                        :plugin-alias (i 2 "plugin-alias") 
+                       {:mod-name (i 1 "module-name")
+                        :plugin-alias (i 2 "plugin-alias")
                         :plugin-name (i 3 "plugin-name")}))]
 
    ;;; JANET
@@ -129,7 +129,7 @@
                      :args (i 2 "x")
                      :body (i 3 "nil")}))
 
-           (s :doc (fmta 
+           (s :doc (fmta
                       "
                      ``
                      <docstring>
@@ -141,8 +141,8 @@
                     "
                     (if <condition> <then> <else>)
                     "
-                    {:condition (i 1 "(true? true)") 
-                     :then (i 2 "true") 
+                    {:condition (i 1 "(true? true)")
+                     :then (i 2 "true")
                      :else (i 3 "false")}))]
 
    ;;; PHP
@@ -176,7 +176,7 @@
                   \t<the-test>
                   });
                   "
-                  {:description (i 1 "\"asserts true is true\"") 
+                  {:description (i 1 "\"asserts true is true\"")
                    :the-test (i 2 "$this->assertTrue(true);")}))
 
          (s :tst (fmta
@@ -185,11 +185,11 @@
                    \t<the-test>
                    });
                    "
-                   {:description (i 1 "\"asserts true is true\"") 
+                   {:description (i 1 "\"asserts true is true\"")
                     :the-test (i 2 "$this->assertTrue(true);")}))
 
          (s :ro (fmta
-                  "require_once __DIR__ . '/<relative-path>.php';" 
+                  "require_once __DIR__ . '/<relative-path>.php';"
                   {:relative-path (i 1 "path-to-file")}))
 
          (s :fun (fmta
@@ -198,9 +198,9 @@
                    \t<body>
                    }
                    "
-                              {:name (i 1 "name") 
-                               :args (i 2 "$x") 
-                               :type (i 3 "bool") 
+                              {:name (i 1 "name")
+                               :args (i 2 "$x")
+                               :type (i 3 "bool")
                                :body (i 4 "return true;")}))
 
          (s :fn (fmt "fn ({x}) => {transformation}"
@@ -208,7 +208,7 @@
 
          (s :if (fmta
                   "
-                  if (<condition>) { 
+                  if (<condition>) {
                   \t<then>
                   }
                   "
@@ -216,15 +216,15 @@
 
          (s :ife (fmta
                   "
-                  if (<condition>) { 
+                  if (<condition>) {
                   \t<then>
                   } else {
                   \t<else>
                   }
                   "
-                  {:condition (i 1 "true") 
-                   :then (i 2 "return true;") 
+                  {:condition (i 1 "true")
+                   :then (i 2 "return true;")
                    :else (i 3 "return false;")}))]})
 
-(set ls.autosnippets 
+(set ls.autosnippets
      {:all [(s :autotrigger [(t "autosnippet")])]})

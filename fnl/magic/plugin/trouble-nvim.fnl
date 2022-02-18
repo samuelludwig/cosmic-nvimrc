@@ -5,7 +5,7 @@
 
 (trbl.setup {})
 
-(u.multimap 
+(u.multimap
   u.mapkey
   ["n" "<leader>xx" trbl.toggle]
   ["n" "<leader>xw" #(trbl.toggle :workspace_diagnostics)])

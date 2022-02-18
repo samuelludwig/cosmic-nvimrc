@@ -7,5 +7,5 @@
 
 (con.setup
   {:ensure_installed ["clojure" "php" "markdown" "javascript" "java" "comment"
-                      "bash" "yaml" "python" "lua" "c" "json" "janet" "fennel"]
+                      "bash" "yaml" "python" "lua" "c" "json" "fennel"]
    :highlight {:enabled true}})

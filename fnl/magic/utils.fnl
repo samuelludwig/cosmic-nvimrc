@@ -8,14 +8,21 @@
 
 (defn unless [predicate body] (when (not predicate) body))
 
-(defn mapkey [modes bind callback ?opts]
-  ;; If the callback does not exist, we don't attempt to map it
-  (unless (a.nil? callback)
+(defn safe-mapkey [modes bind callback ?opts]
+  ;; If the callback does not exist, don't attempt to map it
+  (unless (a.nil? callback) 
     (vim.keymap.set
+       modes
+       bind
+       callback
+       (a.merge default-keymap-options ?opts))))
+
+(defn mapkey [modes bind callback ?opts]
+  (vim.keymap.set
      modes
      bind
      callback
-     (a.merge default-keymap-options ?opts))))
+     (a.merge default-keymap-options ?opts)))
 
 (defn bufmapkey [bufnr modes bind callback ?opts]
   (mapkey 

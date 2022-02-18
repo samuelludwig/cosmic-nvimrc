@@ -98,7 +98,8 @@
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}
   :ahmedkhalf/project.nvim {:mod :project-nvim}
-  :folke/trouble.nvim {}
+  :folke/trouble.nvim {:mod :trouble-nvim
+                       :requires "kyazdani42/nvim-web-devicons"}
   :Pocco81/TrueZen.nvim {}
   :rcarriga/nvim-notify {}
   ;:kevinhwang91/nvim-hlslens {}

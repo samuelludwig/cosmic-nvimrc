@@ -54,6 +54,8 @@
 ;; `config` element for that plugin, with a layer of error-tolerance added on
 ;; top, so that everything won't come crashing down if your config is a little
 ;; scuffed.
+;;
+;; See `magic/plugin.fnl` for the function definition and further details.
 
 (plugin.use
   ;; Criticals
@@ -94,8 +96,11 @@
 
   ;; Colorschemes
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
+  :elianiva/gitgud.nvim {}
 
   ;; Customizations
+  :goolord/alpha-nvim {:mod :alpha-nvim
+                       :requires ["kyazdani42/nvim-web-devicons"]}
   :axelf4/vim-strip-trailing-whitespace {}
   :kyazdani42/nvim-web-devicons {:mod :devicons}
   :ggandor/lightspeed.nvim {}
@@ -118,6 +123,17 @@
   :Pocco81/TrueZen.nvim {}
   :rcarriga/nvim-notify {}
   ;:kevinhwang91/nvim-hlslens {}
+
+  ;; LITEE Tools
+  :ldelossa/litee.nvim {:mod :litee}
+  :ldelossa/litee-calltree.nvim {:mod :litee-calltree
+                                 :requires ["ldelossa/litee.nvim"]}
+  :ldelossa/litee-symboltree.nvim {:mod :litee-symboltree
+                                   :requires ["ldelossa/litee.nvim"]}
+  :ldelossa/litee-filetree.nvim {:mod :litee-filetree
+                                 :requires ["ldelossa/litee.nvim"]}
+  :ldelossa/litee-bookmarks.nvim {:mod :litee-bookmarks
+                                  :requires ["ldelossa/litee.nvim"]}
 
   ;; Generic Lang Support
   :janet-lang/janet.vim {}

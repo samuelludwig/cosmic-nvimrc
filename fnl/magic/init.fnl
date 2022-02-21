@@ -41,6 +41,20 @@
 
 ;; Run script/sync.sh to update, install and clean your plugins.
 ;; Packer configuration format: https://github.com/wbthomason/packer.nvim
+
+;; The `plugin.use` function will map the table belonging to a plugin-name to
+;; the typical format Packer will expect, for example:
+;;
+;;   the option `:requires ["someone/some-other-plugin" "me/my-own-plugin"]`
+;;   will map to `requires = {"someone/some-other-plugin", "me/my-own-plugin"}`
+;;
+;; However, there is a particular little "extra" provided: the `mod` option.
+;; Providing the option `:mod :<name>` will see Packer take the contents of
+;; `fnl/magic/plugin/<name>`, and use them as if they were specified in the
+;; `config` element for that plugin, with a layer of error-tolerance added on
+;; top, so that everything won't come crashing down if your config is a little
+;; scuffed.
+
 (plugin.use
   ;; Criticals
   :Olical/aniseed {}
@@ -105,7 +119,7 @@
   :rcarriga/nvim-notify {}
   ;:kevinhwang91/nvim-hlslens {}
 
-  ;; Lang Support
+  ;; Generic Lang Support
   :janet-lang/janet.vim {}
 
   :wbthomason/packer.nvim {})

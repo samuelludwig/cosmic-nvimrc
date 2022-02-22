@@ -97,6 +97,10 @@
   ;; Colorschemes
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :elianiva/gitgud.nvim {}
+  :shaunsingh/solarized.nvim {:mod :solarized}
+  :rose-pine/neovim {:as :rose-pine
+                     :tag "v1.*"
+                     :mod :rosepine}
 
   ;; Customizations
   :lewis6991/impatient.nvim {}
@@ -154,3 +158,7 @@
       (set nvim.o.background :light))))
 
 (u.mapkey "n" "<leader>b" toggle-background)
+
+;; Set our 'default' colorscheme
+(def sol (require :solarized))
+(do (sol.set) (toggle-background))

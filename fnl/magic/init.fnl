@@ -70,7 +70,7 @@
   :easymotion/vim-easymotion {}
   :folke/which-key.nvim {}
   :guns/vim-sexp {}
-  :hrsh7th/nvim-compe {}
+  :hrsh7th/nvim-cmp {}
   :itchyny/lightline.vim {}
   :jiangmiao/auto-pairs {:mod :auto-pairs}
   :gpanders/nvim-parinfer {}
@@ -99,6 +99,7 @@
   :elianiva/gitgud.nvim {}
 
   ;; Customizations
+  :lewis6991/impatient.nvim {}
   :goolord/alpha-nvim {:mod :alpha-nvim
                        :requires ["kyazdani42/nvim-web-devicons"]}
   :axelf4/vim-strip-trailing-whitespace {}

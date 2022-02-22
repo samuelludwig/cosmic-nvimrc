@@ -162,3 +162,4 @@
 ;; Set our 'default' colorscheme
 (def sol (require :solarized))
 (do (sol.set) (toggle-background))
+;(vim.cmd "set h=%{hostname()}")

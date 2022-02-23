@@ -127,6 +127,7 @@
                        :requires "kyazdani42/nvim-web-devicons"}
   :Pocco81/TrueZen.nvim {}
   :rcarriga/nvim-notify {}
+  :lukas-reineke/indent-blankline.nvim {:mod :blankline}
   ;:kevinhwang91/nvim-hlslens {}
 
   ;; LITEE Tools

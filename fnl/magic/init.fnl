@@ -150,8 +150,6 @@
 
 ;;; After-plugin configs
 
-(set nvim.o.background :light)
-
 (def toggle-background
   #(let [bg nvim.o.background]
     (if (not= "dark" bg) ;; check for a `not` in the case of an unset background
@@ -160,7 +158,20 @@
 
 (u.mapkey "n" "<leader>b" toggle-background)
 
-;; Set our 'default' colorscheme
-(def sol (require :solarized))
-(do (sol.set) (toggle-background))
-;(vim.cmd "set h=%{hostname()}")
+;; Set our theme dependent on what machine we're on.
+(def hostname (vim.loop.os_gethostname))
+
+;; TODO: Ideally source this table from another file?
+(def host-themes
+  {:slt440s #(let [sol (require :solarized)]
+               (sol.set)
+               (set nvim.o.background :light))})
+
+(def set-default-theme
+  #(do (nvim.ex.colorscheme :space-nvim)
+       (set nvim.o.background :dark)))
+
+(let [set-theme-func (. host-themes hostname)]
+  (if (a.nil? set-theme-func)
+    (set-default-theme)
+    (set-theme-func)))

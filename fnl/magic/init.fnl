@@ -103,6 +103,7 @@
                      :mod :rosepine}
 
   ;; Customizations
+  :ojroques/vim-oscyank {}
   :lewis6991/impatient.nvim {}
   :goolord/alpha-nvim {:mod :alpha-nvim
                        :requires ["kyazdani42/nvim-web-devicons"]}
@@ -128,6 +129,7 @@
   :Pocco81/TrueZen.nvim {}
   :rcarriga/nvim-notify {}
   :lukas-reineke/indent-blankline.nvim {:mod :blankline}
+  :mvllow/modes.nvim {:mod :modes-nvim}
   ;:kevinhwang91/nvim-hlslens {}
 
   ;; LITEE Tools

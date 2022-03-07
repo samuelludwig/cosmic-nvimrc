@@ -101,6 +101,7 @@
   :rose-pine/neovim {:as :rose-pine
                      :tag "v1.*"
                      :mod :rosepine}
+  :relastle/bluewery.vim {}
 
   ;; Customizations
   :ojroques/vim-oscyank {}

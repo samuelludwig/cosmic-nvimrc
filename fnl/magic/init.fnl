@@ -97,6 +97,7 @@
   ;; Colorschemes
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :elianiva/gitgud.nvim {}
+  :relastle/bluewery.vim {}
   :shaunsingh/solarized.nvim {:mod :solarized}
   :rose-pine/neovim {:as :rose-pine
                      :tag "v1.*"

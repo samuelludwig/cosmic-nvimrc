@@ -103,6 +103,10 @@
                      :tag "v1.*"
                      :mod :rosepine}
   :relastle/bluewery.vim {}
+  :haystackandroid/snow {}
+  :haystackandroid/cosmic_latte {}
+  :sainnhe/everforest {}
+  :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
 
   ;; Customizations
   :ojroques/vim-oscyank {}

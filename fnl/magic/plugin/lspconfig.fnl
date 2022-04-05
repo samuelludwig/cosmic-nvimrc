@@ -4,18 +4,18 @@
              u magic.utils
              lspc lspconfig}})
 
-(def- ls (. vim.lsp.buf))
-(def- dia (. vim.diagnostic))
+(def- ls vim.lsp.buf)
+(def- dia vim.diagnostic)
 
 ;; Base keybinds for navigating diagnostics
-(u.multimap 
+(u.multimap
   u.mapkey
   ["n" "<leader>e" dia.open_float]
   ["n" "[d" dia.goto_prev]
   ["n" "]d" dia.goto_next]
   ["n" "<leader>q" dia.setloclist])
 
-(defn- on-attach [client bufnr] 
+(defn- on-attach [client bufnr]
   (let [bind #(u.bufmapkey bufnr $1 $2 $3)]
     (u.multimap
       bind
@@ -38,8 +38,8 @@
 
 (defn- setup-server [server]
   (let [s (. lspc server)]
-    (s.setup 
-      {:on_attach on-attach 
+    (s.setup
+      {:on_attach on-attach
        :flags {:debounce_text_changes 150}})))
 
 (a.map setup-server servers)

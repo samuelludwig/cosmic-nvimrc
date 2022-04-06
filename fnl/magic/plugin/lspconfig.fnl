@@ -34,7 +34,9 @@
       ["n" "gr" ls.references]
       ["n" "<leader>z" ls.formatting])))
 
-(def- servers ["intelephense"])
+(def- servers ["intelephense"
+               ;"phpactor"
+               "tsserver"])
 
 (defn- setup-server [server]
   (let [s (. lspc server)]

@@ -105,7 +105,8 @@
   :haystackandroid/snow {}
   :haystackandroid/cosmic_latte {}
   :sainnhe/everforest {}
-  :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+  :mcchrish/zenbones.nvim {:mod :zenbones
+                           :requires ["rktjmp/lush.nvim"]}
 
   ;; Customizations
   :ojroques/vim-oscyank {}
@@ -157,20 +158,19 @@
 
 ;;; After-plugin configs
 
+(def from-env (partial a.get vim.env))
+(def nvim-config-location
+  (vim.fn.expand
+    (from-env
+      "NVIM_CONFIG"
+      (.. (from-env "XDG_CONFIG_HOME" "~/.config") "/nvim"))))
+(def fnl-config-location (.. nvim-config-location "/fnl/magic"))
+
 (def register-command vim.api.nvim_add_user_command)
 (register-command
   "AddModule"
-  #(let [config-location (vim.fn.expand
-                           (a.get vim.env
-                                  "NVIM_CONFIG"
-                                  (a.get vim.env
-                                         "XDG_CONFIG_HOME"
-                                         "~/.config")))
-         module-name (a.get $ :args)
-         target-location (.. config-location
-                             "/nvim/fnl/magic/plugin/"
-                             module-name
-                             ".fnl")
+  #(let [module-name (a.get $ :args)
+         target-location (.. fnl-config-location "/plugin/" module-name ".fnl")
          ;; Maybe base this off of a template somewhere?
          module-definition (.. "(module magic.plugin." module-name
                                "\n  {autoload {a aniseed.core"

@@ -158,28 +158,29 @@
 ;;; After-plugin configs
 
 (def register-command vim.api.nvim_add_user_command)
-(register-command 
-  "AddModule" 
-  #(let [config-location (vim.fn.expand 
-                           (a.get vim.env 
+(register-command
+  "AddModule"
+  #(let [config-location (vim.fn.expand
+                           (a.get vim.env
                                   "NVIM_CONFIG"
-                                  (a.get vim.env 
-                                         "XDG_CONFIG_HOME" 
-                                         "~/.config"))) 
+                                  (a.get vim.env
+                                         "XDG_CONFIG_HOME"
+                                         "~/.config")))
          module-name (a.get $ :args)
          target-location (.. config-location
                              "/nvim/fnl/magic/plugin/"
                              module-name
                              ".fnl")
          ;; Maybe base this off of a template somewhere?
-         module-definition (.. "(module magic.plugin." module-name 
+         module-definition (.. "(module magic.plugin." module-name
                                "\n  {autoload {a aniseed.core"
                                "\n             nvim aniseed.nvim}"
                                "\n   require-macros [magic.macros]})"
                                "\n"
                                "\n  ;; TODO")]
-    (with-open [file (io.open target-location :w)]
-      (file:write module-definition)))
+    (do (with-open [file (io.open target-location :w)]
+          (file:write module-definition))
+        (vim.cmd (.. ":vsplit " target-location))))
   {:nargs 1})
 
 (def toggle-background

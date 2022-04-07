@@ -173,15 +173,13 @@
   #(let [module-name (a.get $ :args)
          target-location (.. fnl-config-location "/plugin/" module-name ".fnl")
          ;; Maybe base this off of a template somewhere?
-         module-definition (.. "(module magic.plugin." module-name
-                               "\n  {autoload {a aniseed.core"
-                               "\n             nvim aniseed.nvim}"
-                               "\n   require-macros [magic.macros]})"
-                               "\n"
-                               "\n;; TODO"
-                               "\n{}")]
-    (do (with-open [file (io.open target-location :w)]
-          (file:write module-definition))
+         module-definition [(.. "(module magic.plugin." module-name)
+                            "  {autoload {a aniseed.core"
+                            "             nvim aniseed.nvim}"
+                            "   require-macros [magic.macros]})"
+                            ""
+                            ";; TODO"]]
+    (do (vim.fn.writefile module-definition target-location)
         (vim.cmd (.. ":vsplit " target-location))))
   {:nargs 1})
 

@@ -136,6 +136,7 @@
   :rcarriga/nvim-notify {}
   :lukas-reineke/indent-blankline.nvim {:mod :blankline}
   :mvllow/modes.nvim {:mod :modes-nvim}
+  :tami5/lispdocs.nvim {:requires ["tami5/sqlite.lua" "Olical/conjure"]}
   ;:kevinhwang91/nvim-hlslens {}
 
   ;; LITEE Tools
@@ -177,7 +178,8 @@
                                "\n             nvim aniseed.nvim}"
                                "\n   require-macros [magic.macros]})"
                                "\n"
-                               "\n  ;; TODO")]
+                               "\n;; TODO"
+                               "\n{}")]
     (do (with-open [file (io.open target-location :w)]
           (file:write module-definition))
         (vim.cmd (.. ":vsplit " target-location))))

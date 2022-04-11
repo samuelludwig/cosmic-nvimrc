@@ -105,8 +105,7 @@
   :haystackandroid/snow {}
   :haystackandroid/cosmic_latte {}
   :sainnhe/everforest {}
-  :mcchrish/zenbones.nvim {:mod :zenbones
-                           :requires ["rktjmp/lush.nvim"]}
+  :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
 
   ;; Customizations
   :ojroques/vim-oscyank {}
@@ -126,6 +125,7 @@
                                            :requires ["tami5/sqlite.lua"]}
   :nvim-treesitter/nvim-treesitter {:mod :treesitter
                                     :run ":TSUpdate"}
+;  :nvim-treesitter/nvim-treesitter-textobjects {:mod :ts-textobjects}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :nvim-treesitter/playground {}
   :L3MON4D3/LuaSnip {:mod :luasnips}

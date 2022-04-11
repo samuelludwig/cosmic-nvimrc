@@ -36,6 +36,7 @@
 
 (def- servers ["intelephense"
                ;"phpactor"
+               "clojure_lsp"
                "tsserver"])
 
 (defn- setup-server [server]

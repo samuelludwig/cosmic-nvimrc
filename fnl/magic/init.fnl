@@ -1,8 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
-             nvim aniseed.nvim
-             a aniseed.core
-             u magic.utils}})
+               nvim aniseed.nvim
+               a aniseed.core
+               u magic.utils}})
 
 ;;; Introduction
 
@@ -64,7 +64,7 @@
 
   ;; Preloadeds
   :PeterRincker/vim-argumentative {}
-  :airblade/vim-gitgutter {}
+  ;:airblade/vim-gitgutter {}
   :clojure-vim/clojure.vim {}
   :clojure-vim/vim-jack-in {}
   :easymotion/vim-easymotion {}
@@ -85,7 +85,7 @@
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
   :tpope/vim-eunuch {}
-  :tpope/vim-fugitive {}
+  :tpope/vim-fugitive {:mod :fugitive}
   :tpope/vim-repeat {}
   :tpope/vim-sexp-mappings-for-regular-people {}
   :tpope/vim-sleuth {}
@@ -138,6 +138,7 @@
   :mvllow/modes.nvim {:mod :modes-nvim}
   :tami5/lispdocs.nvim {:requires ["tami5/sqlite.lua" "Olical/conjure"]}
   ;:kevinhwang91/nvim-hlslens {}
+  :lewis6991/gitsigns.nvim {:mod :gitsigns-nvim}
 
   ;; LITEE Tools
   :ldelossa/litee.nvim {:mod :litee}

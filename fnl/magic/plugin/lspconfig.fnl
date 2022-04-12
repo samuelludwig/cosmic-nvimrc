@@ -2,7 +2,8 @@
   {autoload {nvim aniseed.nvim
              a aniseed.core
              u magic.utils
-             lspc lspconfig}})
+             lspc lspconfig
+             saga lspsaga}})
 
 (def- ls vim.lsp.buf)
 (def- dia vim.diagnostic)
@@ -21,7 +22,7 @@
       bind
       ["n" "gD" ls.declaration]
       ["n" "gd" ls.definition]
-      ["n" "K" ls.hover]
+      ;["n" "K" ls.hover] ; replaced by lspsaga
       ["n" "gi" ls.implementation]
       ["n" "<C-k>" ls.signature_help]
       ["n" "<leader>wa" ls.add_workspace_folder]
@@ -29,10 +30,17 @@
       ["n" "<leader>wl" ls.add_workspace_folder]
       ["n" "<leader>wa" #(-> (ls.list_workspace_folders) vim.inspect print)]
       ["n" "<leader>D" ls.type_definition]
-      ["n" "<leader>rn" ls.rename]
-      ["n" "<leader>ca" ls.code_action]
+      ;["n" "<leader>rn" ls.rename] ; replaced by lspsaga
+      ;["n" "<leader>ca" ls.code_action] ; replaced by lspsaga
       ["n" "gr" ls.references]
-      ["n" "<leader>z" ls.formatting])))
+      ["n" "<leader>z" ls.formatting]
+      ["n" "<leader>rn" "<cmd>Lspsaga rename<cr>"]
+      ["n" "K" "<cmd>Lspsaga hover_doc<cr>"]
+      ["n" "<leader>ca" "<cmd>Lspsaga code_action<cr>"]
+      ["n" "<leader>di" "<cmd>Lspsaga show_line_diagnostics<cr>"]
+      ["n" "<leader>dn" "<cmd>Lspsaga diagnostic_jump_next<cr>"]
+      ["n" "<leader>dp" "<cmd>Lspsaga diagnostic_jump_previous<cr>"]
+      ["x" "<leader>ca" ":<c-u>Lspsaga range_code_action<cr>"])))
 
 (def- servers ["intelephense"
                ;"phpactor"

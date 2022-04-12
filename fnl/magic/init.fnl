@@ -64,7 +64,6 @@
 
   ;; Preloadeds
   :PeterRincker/vim-argumentative {}
-  ;:airblade/vim-gitgutter {}
   :clojure-vim/clojure.vim {}
   :clojure-vim/vim-jack-in {}
   :easymotion/vim-easymotion {}
@@ -85,7 +84,6 @@
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
   :tpope/vim-eunuch {}
-  :tpope/vim-fugitive {:mod :fugitive}
   :tpope/vim-repeat {}
   :tpope/vim-sexp-mappings-for-regular-people {}
   :tpope/vim-sleuth {}
@@ -107,7 +105,26 @@
   :sainnhe/everforest {}
   :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
 
-  ;; Customizations
+
+  ;; Code Smartness
+  :nvim-telescope/telescope-fzf-native.nvim {:run "make"}
+  :nvim-telescope/telescope.nvim {:mod :telescope
+                                  :requires ["nvim-lua/plenary.nvim"
+                                             "nvim-telescope/telescope-fzf-native.nvim"]}
+  :nvim-telescope/telescope-frecency.nvim {:mod :frecency
+                                           :requires ["tami5/sqlite.lua"]}
+  :nvim-treesitter/nvim-treesitter {:mod :treesitter
+                                    :run ":TSUpdate"}
+  ;:nvim-treesitter/nvim-treesitter-textobjects {:mod :ts-textobjects}
+  :neovim/nvim-lspconfig {:mod :lspconfig}
+  :nvim-treesitter/playground {}
+  :L3MON4D3/LuaSnip {:mod :luasnips}
+  :ahmedkhalf/project.nvim {:mod :project-nvim}
+  :jose-elias-alvarez/null-ls.nvim {:mod :nulls
+                                    :requires ["nvim-lua/plenary.nvim"]}
+  :tami5/lspsaga.nvim {:mod :tami-saga}
+
+  ;; Misc. Customizations and Tools
   :ojroques/vim-oscyank {}
   :lewis6991/impatient.nvim {}
   :goolord/alpha-nvim {:mod :alpha-nvim
@@ -117,19 +134,6 @@
   :ggandor/lightspeed.nvim {}
   :nvim-lua/plenary.nvim {}
   :tami5/sqlite.lua {}
-  :nvim-telescope/telescope-fzf-native.nvim {:run "make"}
-  :nvim-telescope/telescope.nvim {:mod :telescope
-                                  :requires ["nvim-lua/plenary.nvim"
-                                             "nvim-telescope/telescope-fzf-native.nvim"]}
-  :nvim-telescope/telescope-frecency.nvim {:mod :frecency
-                                           :requires ["tami5/sqlite.lua"]}
-  :nvim-treesitter/nvim-treesitter {:mod :treesitter
-                                    :run ":TSUpdate"}
-;  :nvim-treesitter/nvim-treesitter-textobjects {:mod :ts-textobjects}
-  :neovim/nvim-lspconfig {:mod :lspconfig}
-  :nvim-treesitter/playground {}
-  :L3MON4D3/LuaSnip {:mod :luasnips}
-  :ahmedkhalf/project.nvim {:mod :project-nvim}
   :folke/trouble.nvim {:mod :trouble-nvim
                        :requires "kyazdani42/nvim-web-devicons"}
   :Pocco81/TrueZen.nvim {}
@@ -138,7 +142,12 @@
   :mvllow/modes.nvim {:mod :modes-nvim}
   :tami5/lispdocs.nvim {:requires ["tami5/sqlite.lua" "Olical/conjure"]}
   ;:kevinhwang91/nvim-hlslens {}
+
+  ;; Git Focused
   :lewis6991/gitsigns.nvim {:mod :gitsigns-nvim}
+  :tpope/vim-fugitive {:mod :fugitive}
+  ;:airblade/vim-gitgutter {}
+  ;:pwntester/octo.nvim {} ; TODO check this out <-
 
   ;; LITEE Tools
   :ldelossa/litee.nvim {:mod :litee}
@@ -176,7 +185,8 @@
          ;; Maybe base this off of a template somewhere?
          module-definition [(.. "(module magic.plugin." module-name)
                             "  {autoload {a aniseed.core"
-                            "             nvim aniseed.nvim}"
+                            "             nvim aniseed.nvim"
+                            "             u magic.utils}"
                             "   require-macros [magic.macros]})"
                             ""
                             ";; TODO"]]

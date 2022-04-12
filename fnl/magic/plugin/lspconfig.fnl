@@ -27,8 +27,7 @@
       ["n" "<C-k>" ls.signature_help]
       ["n" "<leader>wa" ls.add_workspace_folder]
       ["n" "<leader>wr" ls.remove_workspace_folder]
-      ["n" "<leader>wl" ls.add_workspace_folder]
-      ["n" "<leader>wa" #(-> (ls.list_workspace_folders) vim.inspect print)]
+      ["n" "<leader>wl" #(-> (ls.list_workspace_folders) vim.inspect print)]
       ["n" "<leader>D" ls.type_definition]
       ;["n" "<leader>rn" ls.rename] ; replaced by lspsaga
       ;["n" "<leader>ca" ls.code_action] ; replaced by lspsaga

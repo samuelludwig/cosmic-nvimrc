@@ -1,8 +1,8 @@
 (module magic.init
   {autoload {plugin magic.plugin
-               nvim aniseed.nvim
-               a aniseed.core
-               u magic.utils}})
+             nvim aniseed.nvim
+             a aniseed.core
+             u magic.utils}})
 
 ;;; Introduction
 

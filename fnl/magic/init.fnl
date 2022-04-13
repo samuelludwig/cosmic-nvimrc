@@ -62,6 +62,8 @@
   :Olical/aniseed {}
   :Olical/conjure {}
 
+
+
   ;; Preloadeds
   :PeterRincker/vim-argumentative {}
   :clojure-vim/clojure.vim {}
@@ -92,6 +94,8 @@
   :tpope/vim-vinegar {}
   :w0rp/ale {:mod :ale}
 
+
+
   ;; Colorschemes
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :elianiva/gitgud.nvim {}
@@ -104,6 +108,8 @@
   :haystackandroid/cosmic_latte {}
   :sainnhe/everforest {}
   :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+
+
 
 
   ;; Code Smartness
@@ -124,6 +130,8 @@
                                     :requires ["nvim-lua/plenary.nvim"]}
   :tami5/lspsaga.nvim {:mod :tami-saga}
 
+
+
   ;; Misc. Customizations and Tools
   :ojroques/vim-oscyank {}
   :lewis6991/impatient.nvim {}
@@ -143,11 +151,15 @@
   :tami5/lispdocs.nvim {:requires ["tami5/sqlite.lua" "Olical/conjure"]}
   ;:kevinhwang91/nvim-hlslens {}
 
+
+
   ;; Git Focused
   :lewis6991/gitsigns.nvim {:mod :gitsigns-nvim}
   :tpope/vim-fugitive {:mod :fugitive}
   ;:airblade/vim-gitgutter {}
   ;:pwntester/octo.nvim {} ; TODO check this out <-
+
+
 
   ;; LITEE Tools
   :ldelossa/litee.nvim {:mod :litee}
@@ -159,6 +171,8 @@
                                  :requires ["ldelossa/litee.nvim"]}
   :ldelossa/litee-bookmarks.nvim {:mod :litee-bookmarks
                                   :requires ["ldelossa/litee.nvim"]}
+
+
 
   ;; Generic Lang Support
   :janet-lang/janet.vim {}

@@ -20,6 +20,6 @@
 
 (augroup auto-pairs-config
   (nvim.ex.autocmd
-    :FileType "clojure,fennel,scheme,janet"
+    :FileType "clojure,clj,fennel,scheme,janet"
     (.. "call v:lua.require('" *module-name* "').setup()")))
 

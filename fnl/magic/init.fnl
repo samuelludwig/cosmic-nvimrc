@@ -71,7 +71,6 @@
   :easymotion/vim-easymotion {}
   :folke/which-key.nvim {}
   :guns/vim-sexp {}
-  :hrsh7th/nvim-cmp {}
   :itchyny/lightline.vim {}
   :jiangmiao/auto-pairs {:mod :auto-pairs}
   :gpanders/nvim-parinfer {}
@@ -81,7 +80,6 @@
   :mbbill/undotree {}
   :radenling/vim-dispatch-neovim {}
   :srcery-colors/srcery-vim {}
-  :tami5/compe-conjure {}
   :tpope/vim-abolish {}
   :tpope/vim-commentary {}
   :tpope/vim-dispatch {}
@@ -129,6 +127,24 @@
   :jose-elias-alvarez/null-ls.nvim {:mod :nulls
                                     :requires ["nvim-lua/plenary.nvim"]}
   :tami5/lspsaga.nvim {:mod :tami-saga}
+  ;; <> Completion <>
+  :hrsh7th/cmp-nvim-lsp {}
+  :hrsh7th/cmp-buffer {}
+  :hrsh7th/cmp-path {}
+  :hrsh7th/cmp-cmdline {}
+  :petertriho/cmp-git {}
+  ;:tami5/compe-conjure {}
+  :PaterJason/cmp-conjure {}
+  :saadparwaiz1/cmp_luasnip {}
+  ; We have nvim-cmp require all of its sources
+  :hrsh7th/nvim-cmp {:requires [:hrsh7th/cmp-buffer
+                                :hrsh7th/cmp-path
+                                :hrsh7th/cmp-cmdline
+                                :hrsh7th/cmp-nvim-lsp
+                                :petertriho/cmp-git
+                                :saadparwaiz1/cmp_luasnip
+                                :PaterJason/cmp-conjure]
+                     :mod :cmp}
 
 
 

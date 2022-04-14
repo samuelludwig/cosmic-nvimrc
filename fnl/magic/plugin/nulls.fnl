@@ -11,6 +11,6 @@
 (def dia bi.diagnostics)
 
 (nls.setup {:sources [ca.gitsigns
-                      com.luasnip
+                      ;com.luasnip
                       fmt.cljstyle
                       fmt.fnlfmt]})

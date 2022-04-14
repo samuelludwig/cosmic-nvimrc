@@ -144,7 +144,7 @@
                                 :petertriho/cmp-git
                                 :saadparwaiz1/cmp_luasnip
                                 :PaterJason/cmp-conjure]
-                     :mod :cmp}
+                     :mod :nv-cmp}
 
 
 

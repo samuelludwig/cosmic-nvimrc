@@ -1,4 +1,4 @@
-(module magic.plugin.cmp
+(module magic.plugin.nv-cmp
   {autoload {a aniseed.core
              nvim aniseed.nvim
              u magic.utils

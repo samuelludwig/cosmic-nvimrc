@@ -70,7 +70,7 @@
   :clojure-vim/vim-jack-in {}
   :easymotion/vim-easymotion {}
   :folke/which-key.nvim {}
-  :guns/vim-sexp {}
+  :guns/vim-sexp {:mod :vim-sexp}
   :itchyny/lightline.vim {}
   :jiangmiao/auto-pairs {:mod :auto-pairs}
   :gpanders/nvim-parinfer {}

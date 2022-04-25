@@ -207,7 +207,7 @@
       (.. (from-env "XDG_CONFIG_HOME" "~/.config") "/nvim"))))
 (def fnl-config-location (.. nvim-config-location "/fnl/magic"))
 
-(def register-command vim.api.nvim_add_user_command)
+(def register-command vim.api.nvim_create_user_command)
 (register-command
   "AddModule"
   #(let [module-name (a.get $ :args)

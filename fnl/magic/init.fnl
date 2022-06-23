@@ -106,6 +106,7 @@
   :haystackandroid/cosmic_latte {}
   :sainnhe/everforest {}
   :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+  :katawful/kat.nvim {}
 
 
 

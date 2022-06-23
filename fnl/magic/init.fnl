@@ -36,6 +36,8 @@
 (set nvim.g.mapleader " ")
 (set nvim.g.maplocalleader ",")
 
+;; Lets us re-enter normal mode in the typical fashion while in a term buffer
+(u.mapkey [:t] :<Esc> :<C-\><C-n>)
 
 ;;; Plugins
 

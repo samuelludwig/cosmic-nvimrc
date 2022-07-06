@@ -2,22 +2,25 @@
   {autoload {plugin magic.plugin
              nvim aniseed.nvim
              a aniseed.core
-             u magic.utils}})
+             eval aniseed.eval
+             fs aniseed.fs
+             u magic.utils
+             scratch magic.scratch}})
 
-;;; Introduction
+;;;; Introduction
 
-;; Aniseed compiles this (and all other Fennel files under fnl) into the lua
-;; directory. The init.lua file is configured to load this file when ready.
+;;; Aniseed compiles this (and all other Fennel files under fnl) into the lua
+;;; directory. The init.lua file is configured to load this file when ready.
 
-;; We'll use modules, macros and functions to define our configuration and
-;; required plugins. We can use Aniseed to evaluate code as we edit it or just
-;; restart Neovim.
+;;; We'll use modules, macros and functions to define our configuration and
+;;; required plugins. We can use Aniseed to evaluate code as we edit it or just
+;;; restart Neovim.
 
-;; You can learn all about Conjure and how to evaluate things by executing
-;; :ConjureSchool in your Neovim. This will launch an interactive tutorial.
+;;; You can learn all about Conjure and how to evaluate things by executing
+;;; :ConjureSchool in your Neovim. This will launch an interactive tutorial.
 
 
-;;; Generic configuration
+;;;; Generic configuration
 
 (set nvim.o.termguicolors true)
 (set nvim.o.mouse "a")
@@ -31,7 +34,7 @@
 (nvim.ex.set :list)
 
 
-;;; Mappings
+;;;; Mappings
 
 (set nvim.g.mapleader " ")
 (set nvim.g.maplocalleader ",")
@@ -39,25 +42,25 @@
 ;; Lets us re-enter normal mode in the typical fashion while in a term buffer
 (u.mapkey [:t] :<Esc> :<C-\><C-n>)
 
-;;; Plugins
+;;;; Plugins
 
-;; Run script/sync.sh to update, install and clean your plugins.
-;; Packer configuration format: https://github.com/wbthomason/packer.nvim
+;;; Run script/sync.sh to update, install and clean your plugins.
+;;; Packer configuration format: https://github.com/wbthomason/packer.nvim
 
-;; The `plugin.use` function will map the table belonging to a plugin-name to
-;; the typical format Packer will expect, for example:
-;;
-;;   the option `:requires ["someone/some-other-plugin" "me/my-own-plugin"]`
-;;   will map to `requires = {"someone/some-other-plugin", "me/my-own-plugin"}`
-;;
-;; However, there is a particular little "extra" provided: the `mod` option.
-;; Providing the option `:mod :<name>` will see Packer take the contents of
-;; `fnl/magic/plugin/<name>`, and use them as if they were specified in the
-;; `config` element for that plugin, with a layer of error-tolerance added on
-;; top, so that everything won't come crashing down if your config is a little
-;; scuffed.
-;;
-;; See `magic/plugin.fnl` for the function definition and further details.
+;;; The `plugin.use` function will map the table belonging to a plugin-name to
+;;; the typical format Packer will expect, for example:
+;;;
+;;;   the option `:requires ["someone/some-other-plugin" "me/my-own-plugin"]`
+;;;   will map to `requires = {"someone/some-other-plugin", "me/my-own-plugin"}`
+;;;
+;;; However, there is a particular little "extra" provided: the `mod` option.
+;;; Providing the option `:mod :<name>` will see Packer take the contents of
+;;; `fnl/magic/plugin/<name>`, and use them as if they were specified in the
+;;; `config` element for that plugin, with a layer of error-tolerance added on
+;;; top, so that everything won't come crashing down if your config is a little
+;;; scuffed.
+;;;
+;;; See `magic/plugin.fnl` for the function definition and further details.
 
 (plugin.use
   ;; Criticals
@@ -200,7 +203,7 @@
 
 
 
-;;; After-plugin configs
+;;;; After-plugin configs
 
 (def from-env (partial a.get vim.env))
 (def nvim-config-location
@@ -224,7 +227,7 @@
                             ""
                             ";; TODO"]]
     (do (vim.fn.writefile module-definition target-location)
-        (vim.cmd (.. ":vsplit " target-location))))
+       (vim.cmd (.. ":vsplit " target-location))))
   {:nargs 1})
 
 (def toggle-background
@@ -252,3 +255,17 @@
   (if (a.nil? set-theme-func)
     (set-default-theme)
     (set-theme-func)))
+
+;;;; Scratch Config
+
+;; Easy access.
+(register-command
+  "Scratchpad"
+  #(let [scratch-file (.. (fs.basename *file*) "/scratch.fnl")]
+     (vim.cmd (.. ":edit " scratch-file)))
+  {:nargs 0})
+
+;; Source it.
+(scratch.run)
+
+;(eval.str (a.slurp (.. (fs.basename *file*) "/scratch.fnl")) {:force true})

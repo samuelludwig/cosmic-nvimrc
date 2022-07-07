@@ -266,6 +266,6 @@
   {:nargs 0})
 
 ;; Source it.
-(scratch.run)
+(scratch.setup)
 
 ;(eval.str (a.slurp (.. (fs.basename *file*) "/scratch.fnl")) {:force true})

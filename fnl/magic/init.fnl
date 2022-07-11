@@ -261,6 +261,9 @@
     (set-default-theme)
     (set-theme-func)))
 
+;; Quick access to list of colorschemes
+(u.mapkey :n :<leader>cs #(vim.api.nvim_cmd {:cmd :Telescope :args [:colorscheme]} {}))
+
 ;;;; Scratch Config
 
 ;; Easy access.

@@ -100,18 +100,23 @@
 
 
   ;; Colorschemes
+  :Mofiqul/adwaita.nvim {}
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
+  :VonHeikemen/little-wonder {}
   :elianiva/gitgud.nvim {}
-  :relastle/bluewery.vim {}
-  :shaunsingh/solarized.nvim {:mod :solarized}
-  :rose-pine/neovim {:as :rose-pine
-                     :tag "v1.*"
-                     :mod :rosepine}
-  :haystackandroid/snow {}
+  :hardselius/warlock {}
   :haystackandroid/cosmic_latte {}
-  :sainnhe/everforest {}
-  :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+  :haystackandroid/snow {}
   :katawful/kat.nvim {}
+  :kvrohit/substrata.nvim {}
+  :kyazdani42/blue-moon {}
+  :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+  :rebelot/kanagawa.nvim {}
+  :relastle/bluewery.vim {}
+  :rose-pine/neovim {:as :rose-pine :tag "v1.*" :mod :rosepine}
+  :sainnhe/everforest {}
+  :savq/melange {}
+  :shaunsingh/solarized.nvim {:mod :solarized}
 
 
 

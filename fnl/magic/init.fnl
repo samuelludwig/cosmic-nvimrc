@@ -262,8 +262,12 @@
     (set-theme-func)))
 
 ;; Quick access to list of colorschemes
-(u.mapkey :n :<leader>cs #(vim.api.nvim_cmd {:cmd :Telescope :args [:colorscheme]} {}))
+(defn run-cmd [c] (vim.api.nvim_cmd c {}))
+(u.mapkey :n :<leader>cs #(run-cmd {:cmd :Telescope
+                                    :args [:colorscheme]}))
 
+(u.mapkey :n :<leader>sm #(run-cmd {:cmd :Telescope
+                                    :args [:lsp_document_symbols]}))
 ;;;; Scratch Config
 
 ;; Easy access.

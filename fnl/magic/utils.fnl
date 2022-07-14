@@ -8,6 +8,8 @@
 
 (defn unless [predicate body] (when (not predicate) body))
 
+(defn run-cmd [cmd-map] (vim.api.nvim_cmd cmd-map {}))
+
 (defn safe-mapkey [modes bind callback ?opts]
   ;; If the callback does not exist, don't attempt to map it
   (unless (a.nil? callback) 

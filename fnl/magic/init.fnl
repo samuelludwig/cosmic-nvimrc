@@ -73,7 +73,7 @@
   :PeterRincker/vim-argumentative {}
   :clojure-vim/clojure.vim {}
   :clojure-vim/vim-jack-in {}
-  :easymotion/vim-easymotion {}
+  ;:easymotion/vim-easymotion {}
   :folke/which-key.nvim {}
   :guns/vim-sexp {:mod :vim-sexp}
   :itchyny/lightline.vim {}
@@ -232,7 +232,8 @@
                             ""
                             ";; TODO"]]
     (do (vim.fn.writefile module-definition target-location)
-       (vim.cmd (.. ":vsplit " target-location))))
+       (u.run-cmd {:cmd :vsplit
+                   :args [target-location]})))
   {:nargs 1})
 
 (def toggle-background
@@ -241,7 +242,7 @@
       (set nvim.o.background :dark)
       (set nvim.o.background :light))))
 
-(u.mapkey "n" "<leader>b" toggle-background)
+(u.mapkey "n" "<leader><leader>b" toggle-background)
 
 ;; Set our theme dependent on what machine we're on.
 (def hostname (vim.loop.os_gethostname))
@@ -262,21 +263,27 @@
     (set-theme-func)))
 
 ;; Quick access to list of colorschemes
-(defn run-cmd [c] (vim.api.nvim_cmd c {}))
-(u.mapkey :n :<leader>cs #(run-cmd {:cmd :Telescope
-                                    :args [:colorscheme]}))
+(u.mapkey :n :<leader>cs #(u.run-cmd {:cmd :Telescope
+                                      :args [:colorscheme]}))
 
-(u.mapkey :n :<leader>sm #(run-cmd {:cmd :Telescope
-                                    :args [:lsp_document_symbols]}))
+(u.mapkey :n :<leader>sm #(u.run-cmd {:cmd :Telescope
+                                      :args [:lsp_document_symbols]}))
 ;;;; Scratch Config
 
 ;; Easy access.
 (register-command
   "Scratchpad"
   #(let [scratch-file (.. (fs.basename *file*) "/scratch.fnl")]
-     (vim.cmd (.. ":edit " scratch-file)))
+     (u.run-cmd {:cmd :edit
+                 :args [scratch-file]}))
   {:nargs 0})
 
+(register-command
+  "VScratchpad"
+  #(let [scratch-file (.. (fs.basename *file*) "/scratch.fnl")]
+     (u.run-cmd {:cmd :vsplit
+                 :args [scratch-file]}))
+  {:nargs 0})
 ;; Source it.
 (scratch.setup)
 

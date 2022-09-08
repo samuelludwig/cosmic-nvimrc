@@ -100,6 +100,10 @@
 
 
   ;; Colorschemes
+  :yorik1984/newpaper.nvim {}
+  :shaunsingh/oxocarbon.nvim {:run "./install.sh"}
+  :Yagua/nebulous.nvim {}
+  :EdenEast/nightfox.nvim {}
   :Mofiqul/adwaita.nvim {}
   :Th3Whit3Wolf/space-nvim {:mod :space-nvim}
   :VonHeikemen/little-wonder {}
@@ -111,6 +115,7 @@
   :kvrohit/substrata.nvim {}
   :kyazdani42/blue-moon {}
   :mcchrish/zenbones.nvim {:requires ["rktjmp/lush.nvim"]}
+  :alaric/nortia.nvim {:requires ["rktjmp/lush.nvim"]}
   :rebelot/kanagawa.nvim {}
   :relastle/bluewery.vim {}
   :rose-pine/neovim {:as :rose-pine :tag "v1.*" :mod :rosepine}

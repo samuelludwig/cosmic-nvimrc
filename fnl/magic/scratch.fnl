@@ -10,7 +10,7 @@
 ;;; bits there.
 
 (comment
-
+  (vim.ui.input {:prompt "Enter something: "} print)
 
 
   nil)

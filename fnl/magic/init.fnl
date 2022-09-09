@@ -182,6 +182,7 @@
   :mvllow/modes.nvim {:mod :modes-nvim}
   :tami5/lispdocs.nvim {:requires ["tami5/sqlite.lua" "Olical/conjure"]}
   ;:kevinhwang91/nvim-hlslens {}
+  :akinsho/toggleterm.nvim {:mod :toggleterm}
 
 
 
@@ -289,6 +290,7 @@
      (u.run-cmd {:cmd :vsplit
                  :args [scratch-file]}))
   {:nargs 0})
+
 ;; Source it.
 (scratch.setup)
 

@@ -8,17 +8,18 @@
 (def ext tscp.extensions)
 
 ;; Base keybinds for Telescope
-(u.multimap 
+(u.multimap
   u.mapkey
   ["n" "<leader>ff" sc.find_files]
   ["n" "<leader>fg" sc.live_grep]
   ["n" "<leader>fb" sc.buffers]
   ["n" "<leader>fh" sc.help_tags]
   ["n" "<leader>fp" ext.projects.projects]
-  ["n" "<leader>ts" sc.treesitter])
+  ["n" "<leader>ts" sc.treesitter]
+  ["n" "<leader>fm" sc.marks])
 
-(tscp.setup 
-  {:extensions 
+(tscp.setup
+  {:extensions
    ;; These are defaults for fzf
    {:fzf {:fuzzy true
           :override_generic_sorter true

@@ -184,6 +184,7 @@
   ;:kevinhwang91/nvim-hlslens {}
   :akinsho/toggleterm.nvim {:mod :toggleterm}
   :chentoast/marks.nvim {:mod :marks-nvim}
+  :luukvbaal/nnn.nvim {:mod :nnn-nvim}
 
 
 
@@ -243,6 +244,9 @@
                    :args [target-location]})))
   {:nargs 1})
 
+;; Lets us fold clojure code using the typical keybinds (zo, zc, zM, zR, etc.)
+(set vim.g.clojure_fold 1)
+
 (def toggle-background
   #(let [bg nvim.o.background]
     (if (not= "dark" bg) ;; check for a `not` in the case of an unset background
@@ -275,6 +279,7 @@
 
 (u.mapkey :n :<leader>sm #(u.run-cmd {:cmd :Telescope
                                       :args [:lsp_document_symbols]}))
+
 ;;;; Scratch Config
 
 ;; Easy access.

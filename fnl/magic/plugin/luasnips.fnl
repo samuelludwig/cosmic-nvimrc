@@ -73,6 +73,94 @@
   {:all [(quick-snip :sniptest "WE-ARE-WORKING!!!")
          (s :sheb (fmta "#!/usr/bin/env <runner>" {:runner (i 1 "bash")}))]
 
+   ;;; JANET
+   :clojure [(s :de (fmta
+                      "(defn <name> [<args>] <body>)"
+                      {:name (i 1 "name")
+                       :args (i 2 "x")
+                       :body (i 3 "nil")}))
+
+             (s :defn (fmta
+                        "
+                        (defn <name>
+                          \"<doc-string>\"
+                          [<args>]
+                          <body>)
+                        "
+                        {:name (i 1 "name")
+                         :args (i 2 "x")
+                         :doc-string (i 3 "TODO: Document")
+                         :body (i 4 "nil")}))
+
+             (s :defmulti (fmta
+                           "
+                           (defmulti <name>
+                             \"<doc-string>\"
+                             <dispatch-function>)
+                           "
+                           {:name (i 1 "name")
+                            :doc-string (i 2 "TODO: Document")
+                            :dispatch-function (i 3 ":dispatch-fn")}))
+
+             (s :mul (fmta
+                      "
+                      (defmulti <name>
+                        \"<doc-string>\"
+                        <dispatch-function>)
+                      "
+                      {:name (i 1 "name")
+                       :doc-string (i 2 "TODO: Document")
+                       :dispatch-function (i 3 ":dispatch-fn")}))
+
+             (s :defmethod (fmta
+                            "
+                            (defmethod <multifn-name> <dispatch-val>
+                              <body>)
+                            "
+                            {:multifn-name (i 1 "multifn-name")
+                             :dispatch-val (i 2 ":default")
+                             :body (i 3 "nil")}))
+
+             (s :meth (fmta
+                       "
+                       (defmethod <multifn-name> <dispatch-val>
+                         <body>)
+                       "
+                       {:multifn-name (i 1 "multifn-name")
+                        :dispatch-val (i 2 ":default")
+                        :body (i 3 "nil")}))
+
+             (s :let (fmta
+                      "
+                      (let [<bindings>]
+                        <forms>)
+                      "
+                      {:bindings (i 1 "bind :ings")
+                       :forms (i 2 "nil")}))
+
+             (s :red (fmta
+                      "
+                      (reduce
+                        <f>
+                        <init>
+                        <coll>)
+                      "
+                      {:f (i 1 "(fn [x] x)")
+                       :init (i 2 "[]")
+                       :coll (i 3 "[1 2 3]")}))
+
+             (s :trans (fmta
+                        "(transduce <xf> <reducing-fn> <coll>)"
+                        {:xf (i 1 "xf")
+                         :reducing-fn (i 2 "conj")
+                         :coll (i 3 "[1 2 3]")}))
+
+             (s :if (fmta
+                      "(if <condition> <then> <else>)"
+                      {:condition (i 1 "(true? true)")
+                       :then (i 2 "true")
+                       :else (i 3 "false")}))]
+
    ;;; FENNEL
    :fennel [(s :de
                (fmta

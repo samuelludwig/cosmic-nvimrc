@@ -130,6 +130,8 @@
   :savq/melange {:commit "78af754ad22828ea3558e2990326b8aa39730918"}
   :shaunsingh/solarized.nvim {:mod :solarized
                               :commit "34c2245a6ddfd85766f6127768f6b04b0ae2f84a"}
+  :catppuccin/nvim {:as :catppuccin
+                    :commit "a111e8075101c0ac8be79f293e8c5181efa06402"}
 
 
 

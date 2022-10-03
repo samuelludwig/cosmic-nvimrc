@@ -5,7 +5,7 @@
              s lspsaga}
    require-macros [magic.macros]})
 
-(s.setup {})
+(s.init_lsp_saga {})
 
 (u.multimap
   #(u.bufmapkey 0 $1 $2 $3)

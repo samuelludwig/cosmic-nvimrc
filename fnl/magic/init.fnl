@@ -164,7 +164,7 @@
                                     :requires ["nvim-lua/plenary.nvim"]
                                     :commit "c0c19f32b614b3921e17886c541c13a72748d450"}
   :glepnir/lspsaga.nvim {:mod :tami-saga
-                         :commit "9bfd5630b2fbc7e952a310ab0c53a288b1ae7d1b"}
+                         :branch "main"}
 
   ;; <> Completion <>
   :hrsh7th/cmp-nvim-lsp {:commit "affe808a5c56b71630f17aa7c38e15c59fd648a8"}
@@ -209,7 +209,8 @@
   :mvllow/modes.nvim {:mod :modes-nvim
                       :commit "7abb72531dd645aaefed9a4f8a1c2729f2d55e3c"}
   :kkharji/lispdocs.nvim {:requires [:kkharji/sqlite.lua "Olical/conjure"]
-                          :commit "aa5a3bee49803fe22c095524e5abab51bfeea199"}
+                          :commit "aa5a3bee49803fe22c095524e5abab51bfeea199"
+                          :disable true} ; currently seems busted--hacking reqd
   ;:kevinhwang91/nvim-hlslens {:commit ""}
   :akinsho/toggleterm.nvim {:mod :toggleterm
                             :commit "2a787c426ef00cb3488c11b14f5dcf892bbd0bda"}

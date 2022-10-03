@@ -170,7 +170,6 @@
   :hrsh7th/cmp-path {:commit "91ff86cd9c29299a64f968ebb45846c485725f23"}
   :hrsh7th/cmp-cmdline {:commit "c66c379915d68fb52ad5ad1195cdd4265a95ef1e"}
   :petertriho/cmp-git {:commit "fae6cdb407ad6c63a0b1928670bad1a67a55b887"}
-  ;:tami5/compe-conjure {:commit ""}
   :PaterJason/cmp-conjure {:commit "ca39e595a0a64150a3fbad340635b0179fe275ec"}
   :saadparwaiz1/cmp_luasnip {:commit "a9de941bcbda508d0a45d28ae366bb3f08db2e36"}
   ; We have nvim-cmp require all of its sources
@@ -216,6 +215,9 @@
                          :commit "b27cbb78e9082229590b396d3ae4fe07f1aeafe0"}
   :luukvbaal/nnn.nvim {:mod :nnn-nvim
                        :commit "6b048ba5ccab93d05ca77e1b405fef1f74f4bb27"}
+  :epwalsh/obsidian.nvim {:mod :obsidian-nvim
+                          :tag "v1.*"
+                          :requires [:hrsh7th/nvim-cmp]}
 
 
 

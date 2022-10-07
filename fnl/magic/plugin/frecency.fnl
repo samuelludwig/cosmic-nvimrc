@@ -4,4 +4,6 @@
              scp telescope}})
 
 (scp.load_extension "frecency")
-(u.mapkey "n" "<leader>fr" scp.extensions.frecency.frecency)
+(u.mapkey "n" "<leader>fr"
+          scp.extensions.frecency.frecency
+          {:desc "Search frecency"})

@@ -74,7 +74,8 @@
   :clojure-vim/clojure.vim {:commit "b21188c407acb3f6b35116ea84daa82348d4edf9"}
   :clojure-vim/vim-jack-in {:commit "5467e00e26f15680b0a7998f8aa20d5a7dd44cd5"}
   ;:easymotion/vim-easymotion {}
-  :folke/which-key.nvim {:commit "6885b669523ff4238de99a7c653d47b081b5506d"}
+  :folke/which-key.nvim {:commit "6885b669523ff4238de99a7c653d47b081b5506d"
+                         :mod :whichkey}
   :guns/vim-sexp {:mod :vim-sexp
                   :commit "14464d4580af43424ed8f2614d94e62bfa40bb4d"}
   :itchyny/lightline.vim {:commit "b02ef0d9f253dfc1cbb3f340b74998d7a4db0bf6"}
@@ -221,8 +222,9 @@
   :epwalsh/obsidian.nvim {:mod :obsidian-nvim
                           :tag "v1.*"
                           :requires [:hrsh7th/nvim-cmp]}
-  :linty-org/key-menu.nvim {:commit "34c226a4bdadd59ca10f046e3d44f959504b12a4"
-                            :mod :keymenu}
+  ; :linty-org/key-menu.nvim {:commit "34c226a4bdadd59ca10f046e3d44f959504b12a4"
+  ;                           :mod :keymenu
+  ;                           :disable true}
 
 
 

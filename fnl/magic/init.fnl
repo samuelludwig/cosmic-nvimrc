@@ -221,6 +221,8 @@
   :epwalsh/obsidian.nvim {:mod :obsidian-nvim
                           :tag "v1.*"
                           :requires [:hrsh7th/nvim-cmp]}
+  :linty-org/key-menu.nvim {:commit "34c226a4bdadd59ca10f046e3d44f959504b12a4"
+                            :mod :keymenu}
 
 
 
@@ -291,7 +293,7 @@
       (set nvim.o.background :dark)
       (set nvim.o.background :light))))
 
-(u.mapkey "n" "<leader><leader>b" toggle-background)
+(u.mapkey "n" "<leader><leader>b" toggle-background {:desc "Toggle background"})
 
 ;; Set our theme dependent on what machine we're on.
 (def hostname (vim.loop.os_gethostname))
@@ -312,11 +314,13 @@
     (set-theme-func)))
 
 ;; Quick access to list of colorschemes
-(u.mapkey :n :<leader>cs #(u.run-cmd {:cmd :Telescope
-                                      :args [:colorscheme]}))
+(u.mapkey :n :<leader>cs
+          #(u.run-cmd {:cmd :Telescope :args [:colorscheme]})
+          {:desc "List colorschemes"})
 
-(u.mapkey :n :<leader>sm #(u.run-cmd {:cmd :Telescope
-                                      :args [:lsp_document_symbols]}))
+(u.mapkey :n :<leader>sm
+          #(u.run-cmd {:cmd :Telescope :args [:lsp_document_symbols]})
+          {:desc "List lsp-symbols"})
 
 ;;;; Scratch Config
 

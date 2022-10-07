@@ -10,13 +10,13 @@
 ;; Base keybinds for Telescope
 (u.multimap
   u.mapkey
-  ["n" "<leader>ff" sc.find_files]
-  ["n" "<leader>fg" sc.live_grep]
-  ["n" "<leader>fb" sc.buffers]
-  ["n" "<leader>fh" sc.help_tags]
-  ["n" "<leader>fp" ext.projects.projects]
-  ["n" "<leader>ts" sc.treesitter]
-  ["n" "<leader>fm" sc.marks])
+  ["n" "<leader>ff" sc.find_files {:desc "Find files"}]
+  ["n" "<leader>fg" sc.live_grep {:desc "Live grep"}]
+  ["n" "<leader>fb" sc.buffers {:desc "Search buffers"}]
+  ["n" "<leader>fh" sc.help_tags {:desc "Search help tags"}]
+  ["n" "<leader>fp" ext.projects.projects {:desc "Search projects"}]
+  ["n" "<leader>ts" sc.treesitter {:desc "Search TS symbols"}]
+  ["n" "<leader>fm" sc.marks {:desc "Search marks"}])
 
 (tscp.setup
   {:extensions
